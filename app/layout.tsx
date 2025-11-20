@@ -4,9 +4,7 @@ import type { ReactNode } from 'react';
 import Navbar from '../components/Navbar';
 import { Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
 
-// PERFORMANCE FIX: Using display: 'swap' is crucial.
-// This tells the browser to display text immediately using a fallback font
-// and then swap to Inter when it is ready, preventing the 841ms font blocking issue.
+
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata = {

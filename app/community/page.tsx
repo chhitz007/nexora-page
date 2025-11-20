@@ -1,10 +1,8 @@
 'use client';
 
 import React from 'react';
-// Keep the necessary icons
 import { Users, Shield, Zap, TrendingUp, ChevronRight, CornerDownRight } from 'lucide-react';
 
-// Custom Link component (essential for framework compatibility)
 interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
     href: string;
 }
@@ -15,9 +13,8 @@ const CustomLink: React.FC<CustomLinkProps> = ({ href, children, ...props }) => 
     </a>
 );
 
-export default function CommunityPageCondensed() {
+export default function CommunityPagePolished() {
 
-    // Array of features (Data remains the same)
     const teaserFeatures = [
         {
             icon: Users,
@@ -37,92 +34,85 @@ export default function CommunityPageCondensed() {
         },
     ];
 
-    // Refined Color Variables (No changes needed here)
-    const accentColor = 'text-purple-400';
-    const accentButton = 'bg-purple-600 hover:bg-purple-700 shadow-xl shadow-purple-600/30 transition-all duration-300 transform hover:scale-[1.015]';
-
+    // Brand Colors
+    const brandPurpleText = 'text-purple-600';
+    const brandLightBg = 'bg-purple-50';
+    const brandBorder = 'border-purple-200';
+    const accentButton = 'bg-purple-600 hover:bg-purple-700 text-white shadow-xl shadow-purple-600/20 transition-all duration-300 transform hover:-translate-y-0.5';
 
     return (
-        // Main container: Full-bleed, dark background
-        <div className="min-h-screen font-sans bg-gray-950 text-gray-100 antialiased">
+        // Main container
+        <div className="min-h-screen font-sans bg-white text-slate-900 antialiased selection:bg-purple-100 selection:text-purple-900">
 
-            {/* Header/Hero Section: REDUCED VERTICAL PADDING */}
-            {/* Changed pt-24 pb-32 to pt-16 pb-24 */}
-            <header className="pt-16 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-
-                {/* Subtle Background Glow/Noise Effect (Modern Touch) */}
-                <div className="absolute top-0 left-0 w-full h-full opacity-10 bg-gradient-to-br from-gray-950 via-purple-900/10 to-gray-950 pointer-events-none"></div>
-
+            {/* Header/Hero Section */}
+            <header className="pt-16 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-purple-50/40 to-white">
                 <div className="max-w-7xl mx-auto z-10 relative">
 
-                    {/* Tagline / Teaser - REDUCED MARGIN BOTTOM */}
-                    {/* Changed mb-6 to mb-4 */}
-                    <div className="flex items-center mb-4 justify-center sm:justify-start">
-                        <Zap className={`w-6 h-6 ${accentColor} animate-pulse mr-2`} />
-                        <span className="inline-block text-sm font-semibold text-white bg-purple-900/70 border border-purple-500 uppercase tracking-widest px-4 py-1 rounded-full shadow-md shadow-purple-900">
-                            LAUNCHING SOON
+                    {/* Tagline - Updated Typography: Bold & Wide Tracking */}
+                    <div className="flex items-center mb-8 justify-center sm:justify-start">
+                        <span className={`inline-flex items-center px-4 py-1.5 rounded-full border ${brandBorder} ${brandLightBg} shadow-sm`}>
+                            <Zap className={`w-4 h-4 ${brandPurpleText} mr-2 fill-purple-200`} />
+                            <span className={`text-[11px] font-black ${brandPurpleText} uppercase tracking-[0.2em]`}>
+                                Launching Soon
+                            </span>
                         </span>
                     </div>
 
-                    {/* Main Headline & Subtext (Left-aligned for a modern feel) */}
+                    {/* Main Headline - Updated Typography: Tighter & Heavier */}
                     <div className="text-center sm:text-left max-w-4xl mx-auto sm:mx-0">
-                        {/* Reduced h1 mb-6 to mb-4 */}
-                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-4 leading-tight">
-                            The <span className={`${accentColor} drop-shadow-[0_0_6px_rgba(192,132,252,0.4)]`}>Bulk Business Community</span> is Taking Shape
+                        <h1 className="text-5xl sm:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[1.1]">
+                            The <span className={`${brandPurpleText}`}>Bulk Business Community</span> is Taking Shape
                         </h1>
-                        {/* Reduced p mt-6 to mt-4 */}
-                        <p className="mt-4 text-xl text-gray-400 leading-relaxed max-w-2xl">
-                            {/* 🔥 FIX: Replaced ' with &apos; to resolve react/no-unescaped-entities error */}
-                            We&apos;re building a dedicated space for manufacturers, procurement managers, and logistics partners to share insights, find opportunities, and shape the future of B2B supply chains.
+                        {/* Subtext - Updated Typography: Larger & Relaxed */}
+                        <p className="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl font-medium">
+                            We&apos;re building a dedicated space for manufacturers, procurement managers, and logistics partners to share insights and shape the future of B2B supply chains.
                         </p>
                     </div>
-                </div>
 
-                {/* Call to Action - REDUCED MARGIN TOP/PADDING TOP */}
-                {/* Changed mt-10 pt-8 to mt-8 pt-6 */}
-                <div className="mt-8 pt-6 border-t border-purple-900/50 max-w-7xl mx-auto z-10 relative flex justify-center sm:justify-start">
-                    <CustomLink
-                        href="/contact"
-                        className={`flex items-center px-8 py-3 text-lg font-bold rounded-lg text-white ${accentButton}`}
-                    >
-                        Get Notified When We Launch
-                        <ChevronRight className="w-5 h-5 ml-2" />
-                    </CustomLink>
+                    {/* Call to Action */}
+                    <div className="mt-10 pt-8 border-t border-slate-200/60 max-w-7xl mx-auto z-10 relative flex justify-center sm:justify-start">
+                        <CustomLink
+                            href="/contact"
+                            className={`flex items-center px-8 py-4 text-lg font-bold tracking-tight rounded-xl ${accentButton}`}
+                        >
+                            Get Notified When We Launch
+                            <ChevronRight className="w-5 h-5 ml-2" />
+                        </CustomLink>
+                    </div>
                 </div>
             </header>
 
-            {/* Main Content / Features Section: REDUCED VERTICAL PADDING */}
-            {/* Changed py-20 to py-16 */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50 border-t border-b border-gray-800">
+            {/* FEATURES SECTION */}
+            <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-200 border-t border-slate-200">
                 <div className="max-w-7xl mx-auto">
-                    {/* Reduced h2 mb-12 to mb-8 */}
-                    <h2 className="text-3xl font-bold text-white mb-8 text-center">
+                    {/* Section Header - Tighter Tracking */}
+                    <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 mb-12 text-center">
                         A Vetted Ecosystem Built for Growth
                     </h2>
 
-                    {/* Reduced card gap from gap-8 to gap-6 */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         {teaserFeatures.map((feature, index) => {
                             const IconComponent = feature.icon;
                             return (
                                 <div key={index}
-                                    /* Reduced inner padding from p-8 to p-6 */
-                                    className="p-6 rounded-xl transition duration-500 border border-gray-800 hover:border-purple-600 hover:bg-gray-800/20 transform hover:-translate-y-2">
+                                    className="relative p-8 rounded-2xl bg-white border-t-[6px] border-purple-600 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.08)] hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 group">
 
-                                    {/* Icon & Title - Reduced mb-4 to mb-3 */}
-                                    <div className="flex items-center mb-3">
-                                        <div className="p-3 rounded-full mr-3 bg-purple-600/20 border border-purple-800">
-                                            <IconComponent className="w-6 h-6 text-purple-400" />
+                                    <div className="flex items-start mb-4">
+                                        <div className={`p-3.5 rounded-xl mr-4 bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300`}>
+                                            <IconComponent className="w-6 h-6" />
                                         </div>
-                                        <h3 className="text-xl font-extrabold text-white">{feature.title}</h3>
+                                        <div>
+                                            {/* Card Title - Tighter */}
+                                            <h3 className="text-xl font-extrabold text-slate-900 tracking-tight">{feature.title}</h3>
+                                            {feature.titleSub && <div className="text-xs font-bold text-purple-600 uppercase tracking-wider mt-1">{feature.titleSub}</div>}
+                                        </div>
                                     </div>
 
-                                    {/* Description */}
-                                    <p className="text-base text-gray-400 mt-2">{feature.description}</p>
+                                    {/* Card Description - More readable Slate color */}
+                                    <p className="text-[15px] text-slate-600 mt-3 leading-7 font-medium">{feature.description}</p>
 
-                                    {/* Subtle Callout - Reduced mt-4 pt-4 to mt-3 pt-3 */}
-                                    <div className={`mt-3 pt-3 border-t border-gray-700`}>
-                                        <span className="text-xs font-medium text-purple-500 flex items-center">
+                                    <div className={`mt-6 pt-5 border-t border-slate-100`}>
+                                        <span className={`text-[10px] font-black ${brandPurpleText} flex items-center uppercase tracking-[0.15em]`}>
                                             Vetted Membership <CornerDownRight className="w-3 h-3 ml-1" />
                                         </span>
                                     </div>
@@ -133,19 +123,7 @@ export default function CommunityPageCondensed() {
                 </div>
             </section>
 
-            {/* Footer / Secondary CTA: REDUCED VERTICAL PADDING */}
-            {/* Changed py-12 to py-8 */}
-            <footer className="py-8 px-4 bg-gray-950/80">
-                <div className="max-w-7xl mx-auto text-center">
-                    <p className="text-md text-gray-500">
-                        Ready to see the difference a dedicated network can make?
-                    </p>
-                    {/* Reduced p mt-2 to mt-1 */}
-                    <p className="mt-1 text-sm text-gray-500">
-                        In the meantime, feel free to check out our <CustomLink href="/" className={`${accentColor} hover:text-purple-300 font-medium transition-colors underline-offset-4 hover:underline`}>homepage</CustomLink> for more information.
-                    </p>
-                </div>
-            </footer>
+            
         </div>
     );
 }

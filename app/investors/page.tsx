@@ -1,13 +1,8 @@
 'use client';
 import React, { useState } from 'react';
+import { Check, TrendingUp, ArrowRight, PieChart, Globe, Lock } from 'lucide-react';
 
-// --- Icon Components (Simple, professional icons for UI) ---
-// Using Lucide-React for better consistency and features
-import { Check, Briefcase, TrendingUp, ShieldCheck, ArrowRight } from 'lucide-react';
-
-
-// --- Main Content Component ---
-function InvestorPageContent() {
+function InvestorPageTighter() {
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
@@ -18,23 +13,24 @@ function InvestorPageContent() {
         message: ''
     });
 
-    const containerClasses = 'bg-gray-950 text-gray-100 font-inter';
-    const accentColor = 'text-purple-400';
-    const buttonClasses = 'bg-purple-600 text-white hover:bg-purple-700 focus:ring-4 focus:ring-purple-500/50 shadow-lg shadow-purple-500/30';
+    // Brand Design System
+    const brandPurpleText = 'text-purple-600';
+    const brandLightBg = 'bg-purple-50';
+    const brandBorder = 'border-purple-200';
+
+    // Button: Purple, Solid, High Visibility
+    const accentButton = 'bg-purple-600 hover:bg-purple-500 text-white font-bold tracking-tight shadow-lg shadow-purple-600/30 transition-all duration-300 transform hover:-translate-y-0.5';
+
+    // TIGHTENED: Reduced input padding from p-4 to p-3.5, changed rounded-xl to rounded-lg
+    const inputClasses = "mt-1 w-full p-3.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-purple-500 focus:ring-4 focus:ring-purple-500/10 transition-all duration-200 font-medium";
+    const labelClasses = "block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1";
 
     const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
         setFormData({ ...formData, [e.target.name]: e.target.value });
 
-    // --- Frontend-Only Form Submission Handler ---
     const handleFormSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-
-        console.log("Frontend Form Submission Simulated. Data captured:", {
-            ...formData,
-            timestamp: new Date().toISOString()
-        });
-
         setTimeout(() => {
             setLoading(false);
             setFormSubmitted(true);
@@ -43,148 +39,189 @@ function InvestorPageContent() {
     };
 
     return (
-        <div className={`min-h-screen ${containerClasses} antialiased`}>
-            {/* Custom Font Import for a clean look */}
-            <style jsx global>{`
-                @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-                .font-inter { font-family: 'Inter', sans-serif; }
-            `}</style>
+        <div className="min-h-screen font-sans bg-white text-slate-900 antialiased selection:bg-purple-100 selection:text-purple-900">
 
-            {/* --- 1. Hero & Overview Section --- */}
-            <header className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-                {/* Subtle Background Glow/Noise Effect (Enhanced with more depth) */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-purple-900/15 to-gray-950 opacity-20 pointer-events-none z-0"></div>
-                <div className="absolute inset-0 z-0 opacity-5" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg width=\"6\" height=\"6\" viewBox=\"0 0 6 6\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"%239C92AC\" fill-opacity=\"0.1\" fill-rule=\"evenodd\"%3E%3Cpath d=\"M0 0h3v3H0V0zm3 3h3v3H3V3z\"/%3E%3C/g%3E%3C/svg%3E')" }}></div>
+            {/* --- 1. Hero Section (Light & Airy) --- */}
+            <header className="pt-20 pb-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-gradient-to-b from-white via-purple-50/40 to-white">
+                <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between z-10 relative">
 
-
-                <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between z-10 relative">
                     {/* Left side: Text Content */}
-                    <div className="text-center md:text-left md:w-2/3 lg:w-3/5 mb-10 md:mb-0 pr-0 md:pr-8">
-                        <span className={`inline-block text-sm font-semibold uppercase tracking-widest mb-4 px-4 py-1.5 rounded-full bg-purple-900/50 border border-purple-400/50 ${accentColor}`}>
-                            Investor Relations
+                    <div className="text-center lg:text-left lg:w-1/2 mb-12 lg:mb-0">
+                        <span className={`inline-flex items-center px-4 py-1.5 rounded-full border ${brandBorder} ${brandLightBg} shadow-sm mb-8`}>
+                            <TrendingUp className={`w-4 h-4 ${brandPurpleText} mr-2`} />
+                            <span className={`text-[11px] font-black ${brandPurpleText} uppercase tracking-[0.2em]`}>
+                                Investor Relations
+                            </span>
                         </span>
-                        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
-                            Capitalizing on <span className={`${accentColor} drop-shadow-[0_0_8px_rgba(192,132,252,0.6)]`}>Global Supply Chain Digitalization</span>
+
+                        <h1 className="text-5xl sm:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[1.1]">
+                            Capitalizing on <span className={`${brandPurpleText}`}>Global Supply Chain</span> Digitalization
                         </h1>
-                        <p className="mt-4 text-xl text-gray-400 max-w-xl leading-relaxed">
-                            Bulk Business is positioned to be a market leader in the multi-trillion dollar B2B logistics and procurement sector. We offer a high-growth opportunity to partners looking to invest in efficiency, scale, and proprietary technology.
+
+                        <p className="mt-6 text-lg sm:text-xl text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
+                            Bulk Business is positioned to lead the multi-trillion dollar B2B logistics sector. We offer a high-growth opportunity for partners investing in efficiency.
                         </p>
                     </div>
 
-                    {/* Right side: Abstract Visual (Placeholder for a relevant graphic or data viz) */}
-                    <div className="md:w-1/3 lg:w-2/5 flex justify-center md:justify-end">
-                        {/* Placeholder for a complex, abstract, glowing data visualization */}
-                        <div className="w-64 h-64 sm:w-80 sm:h-80 bg-purple-800/20 rounded-full flex items-center justify-center relative overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-br from-purple-500/40 via-blue-500/20 to-transparent animate-spin-slow"></div>
-                            <Briefcase className="w-24 h-24 text-purple-300 relative z-10" />
-                            <div className="absolute inset-0 ring-4 ring-purple-600/30 rounded-full animate-pulse-ring"></div>
+                    {/* Right side: Visual */}
+                    <div className="lg:w-1/2 flex justify-center lg:justify-end relative">
+                        {/* Data Card Visual */}
+                        <div className="relative w-full max-w-md bg-white/80 backdrop-blur-xl border border-slate-100 shadow-2xl rounded-2xl p-8 border-t-[6px] border-t-purple-600">
+                            <div className="flex items-center justify-between mb-8">
+                                <div>
+                                    <div className="text-sm text-slate-500 font-bold uppercase tracking-wide">Annual Growth</div>
+                                    <div className="text-4xl font-black text-slate-900 mt-1">+127%</div>
+                                </div>
+                                <div className="p-3 bg-green-50 rounded-xl text-green-600">
+                                    <TrendingUp className="w-8 h-8" />
+                                </div>
+                            </div>
+                            <div className="space-y-4">
+                                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                    <div className="h-full bg-purple-600 w-[85%]"></div>
+                                </div>
+                                <div className="flex justify-between text-sm font-bold text-slate-500">
+                                    <span>Q1 Performance</span>
+                                    <span className="text-purple-600">Exceeded Target</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </header>
 
-            {/* --- 2. Key Investment Highlights --- */}
-            <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50 border-t border-b border-gray-800">
+            {/* --- 2. Key Investment Highlights (NEW: Slate-50 Background for Contrast) --- */}
+            <section className="py-8 px-4 sm:px-6 lg:px-8 bg-slate-200 border-t border-slate-100">
                 <div className="max-w-7xl mx-auto">
-                    <h2 className="text-3xl font-bold text-white mb-12 text-center">
+                    <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 mb-16 text-center">
                         Why Invest in Bulk Business?
                     </h2>
 
                     <div className="grid md:grid-cols-3 gap-8">
-                        {/* Reusing Lucide icons and enhancing their presentation */}
                         {[
-                            { icon: TrendingUp, title: 'High-Growth Sector', description: 'The B2B procurement market is undergoing a massive digital shift, representing a significant total addressable market (TAM).' },
-                            { icon: Briefcase, title: 'Proprietary Technology', description: 'Our logistics platform uses AI-driven routing and predictive analytics to achieve unmatched efficiency and cost savings.' },
-                            { icon: ShieldCheck, title: 'Proven Execution', description: 'Consistent quarterly growth and positive customer retention metrics, demonstrating robust business model validation.' },
+                            { icon: Globe, title: 'High-Growth Sector', description: 'The B2B procurement market is undergoing a massive digital shift with significant TAM.' },
+                            { icon: PieChart, title: 'Proprietary Tech', description: 'Our platform uses AI-driven routing and predictive analytics for unmatched cost savings.' },
+                            { icon: Lock, title: 'Proven Execution', description: 'Consistent quarterly growth and positive customer retention metrics validate our model.' },
                         ].map((item, index) => (
-                            <div key={index} className="text-center p-6 rounded-xl border border-gray-800 hover:border-purple-600 hover:bg-gray-800/20 transition-all duration-300 transform hover:-translate-y-1 group">
-                                <div className="mb-4 inline-flex items-center justify-center p-3 rounded-full bg-purple-600/20 border border-purple-800 transition-colors duration-300 group-hover:bg-purple-600/30">
-                                    <item.icon className="w-7 h-7 text-purple-400 group-hover:text-purple-300" />
+                            <div key={index}
+                                // Cards are now white, lifted by a shadow, sitting on the slate-50 background.
+                                className="relative p-8 rounded-2xl bg-white border border-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 group"
+                            >
+                                <div className="flex flex-col items-start">
+                                    <div className="mb-6 p-3.5 rounded-xl bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition-colors duration-300">
+                                        <item.icon className="w-7 h-7" />
+                                    </div>
+                                    <h3 className="text-xl font-extrabold text-slate-900 tracking-tight mb-3">{item.title}</h3>
+                                    <p className="text-[15px] text-slate-600 leading-7 font-medium">{item.description}</p>
                                 </div>
-                                <h3 className="mt-2 text-xl font-bold text-white">{item.title}</h3>
-                                <p className="mt-2 text-gray-400 text-base">{item.description}</p>
                             </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* --- 3. Investor Inquiry Form Section --- */}
-            <section className="py-20 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-xl mx-auto relative">
-                    <div className={`bg-gray-900 p-8 sm:p-10 rounded-2xl shadow-2xl shadow-purple-900/50 border-t-4 border-purple-600 transition-opacity duration-300 ${loading ? 'opacity-70' : 'opacity-100'}`}>
-                        <h2 className="text-3xl font-bold text-white mb-2">Request Investor Deck</h2>
-                        <p className="text-gray-400 mb-8">Please complete the form below. Our dedicated investor relations team will respond within 48 hours.</p>
+            {/* --- 3. Investor Inquiry Form (Spotlight Section - TIGHTENED) --- */}
+            {/* TIGHTENED: Reduced py-24 to py-16 */}
+            <section className="py-10 px-4 sm:px-6 lg:px-8 bg-slate-900 relative overflow-hidden">
 
-                        <form onSubmit={handleFormSubmit} className="space-y-6">
-                            {/* Form Fields - Reusing previous clean styling */}
-                            <div>
-                                <label htmlFor="name" className="block text-sm font-medium text-gray-300">Full Name</label>
-                                <input type="text" name="name" id="name" required
-                                    className="mt-1 w-full p-3 border border-gray-700 bg-gray-800 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500 text-white transition-colors placeholder:text-gray-500"
-                                    onChange={handleFormChange} placeholder="John Doe" value={formData.name} />
+                {/* Background Texture for the Dark Section */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light"></div>
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-purple-900/20 to-transparent pointer-events-none"></div>
+
+                <div className="max-w-3xl mx-auto relative z-10">
+
+                    <div className="text-center mb-10">
+                        <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-3">
+                            Request Investor Deck
+                        </h2>
+                        <p className="text-lg text-slate-400 font-medium">
+                            Our dedicated investor relations team responds within 48 hours.
+                        </p>
+                    </div>
+
+                    {/* Form Card: TIGHTENED - Reduced p-8/p-10 to p-6/p-8 */}
+                    <div className={`bg-white p-6 sm:p-8 rounded-2xl shadow-2xl shadow-black/50 relative overflow-hidden transition-opacity duration-300 ${loading ? 'opacity-70' : 'opacity-100'}`}>
+
+                        <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-purple-600 via-purple-400 to-purple-600"></div>
+
+                        <form onSubmit={handleFormSubmit} className="space-y-5">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                                <div>
+                                    <label htmlFor="name" className={labelClasses}>Full Name</label>
+                                    <input type="text" name="name" id="name" required
+                                        className={inputClasses} // uses p-3.5
+                                        onChange={handleFormChange} placeholder="John Doe" value={formData.name} />
+                                </div>
+
+                                <div>
+                                    <label htmlFor="email" className={labelClasses}>Work Email</label>
+                                    <input type="email" name="email" id="email" required
+                                        className={inputClasses} // uses p-3.5
+                                        onChange={handleFormChange} placeholder="name@firm.com" value={formData.email} />
+                                </div>
                             </div>
 
                             <div>
-                                <label htmlFor="email" className="block text-sm font-medium text-gray-300">Work Email</label>
-                                <input type="email" name="email" id="email" required
-                                    className="mt-1 w-full p-3 border border-gray-700 bg-gray-800 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500 text-white transition-colors placeholder:text-gray-500"
-                                    onChange={handleFormChange} placeholder="investor@firmname.com" value={formData.email} />
-                            </div>
-
-                            <div>
-                                <label htmlFor="organization" className="block text-sm font-medium text-gray-300">Organization / Fund Name</label>
+                                <label htmlFor="organization" className={labelClasses}>Organization / Fund Name</label>
                                 <input type="text" name="organization" id="organization"
-                                    className="mt-1 w-full p-3 border border-gray-700 bg-gray-800 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500 text-white transition-colors placeholder:text-gray-500"
+                                    className={inputClasses}
                                     onChange={handleFormChange} placeholder="Venture Capital XYZ" value={formData.organization} />
                             </div>
 
                             <div>
-                                <label htmlFor="interest" className="block text-sm font-medium text-gray-300">Investment Stage of Interest</label>
-                                <select name="interest" id="interest" required
-                                    className="mt-1 w-full p-3 border border-gray-700 bg-gray-800 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500 text-white transition-colors"
-                                    onChange={handleFormChange} value={formData.interest}>
-                                    <option className="bg-gray-900" value="VC">Venture Capital (Series A+)</option>
-                                    <option className="bg-gray-900" value="PE">Private Equity (Growth)</option>
-                                    <option className="bg-gray-900" value="Angel">Angel / Seed Investor</option>
-                                    <option className="bg-gray-900" value="Strategic Partner">Strategic Partner</option>
-                                </select>
+                                <label htmlFor="interest" className={labelClasses}>Investment Stage of Interest</label>
+                                <div className="relative">
+                                    <select name="interest" id="interest" required
+                                        className={`${inputClasses} appearance-none cursor-pointer`}
+                                        onChange={handleFormChange} value={formData.interest}>
+                                        <option value="VC">Venture Capital (Series A+)</option>
+                                        <option value="PE">Private Equity (Growth)</option>
+                                        <option value="Angel">Angel / Seed Investor</option>
+                                        <option value="Strategic Partner">Strategic Partner</option>
+                                    </select>
+                                    <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-500">
+                                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+                                    </div>
+                                </div>
                             </div>
 
                             <div>
-                                <label htmlFor="message" className="block text-sm font-medium text-gray-300">Introductory Note</label>
+                                <label htmlFor="message" className={labelClasses}>Introductory Note</label>
                                 <textarea name="message" id="message" rows={3}
-                                    className="mt-1 w-full p-3 border border-gray-700 bg-gray-800 rounded-md shadow-sm focus:border-purple-500 focus:ring-purple-500 text-white resize-none transition-colors placeholder:text-gray-500"
-                                    onChange={handleFormChange} placeholder="We are interested in your recent funding round..." value={formData.message}></textarea>
+                                    className={inputClasses}
+                                    onChange={handleFormChange} placeholder="We are interested in..." value={formData.message}></textarea>
                             </div>
 
-                            {/* Submit Button */}
-                            <button type="submit" disabled={loading} className={`w-full py-3 px-4 border border-transparent rounded-lg font-semibold transition-colors duration-200 uppercase tracking-wider disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center ${buttonClasses}`}>
-                                {loading ? (
-                                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                                    </svg>
-                                ) : (
-                                    <>SUBMIT INQUIRY <ArrowRight className="w-5 h-5 ml-2" /></>
-                                )}
-                            </button>
+                            {/* TIGHTENED: Reduced py-4 to py-3.5 */}
+                            <div className="pt-4">
+                                <button type="submit" disabled={loading} className={`w-full py-3.5 px-4 rounded-xl flex items-center justify-center ${accentButton} disabled:opacity-70 disabled:cursor-not-allowed`}>
+                                    {loading ? (
+                                        <span className="flex items-center">Processing...</span>
+                                    ) : (
+                                        <>REQUEST ACCESS <ArrowRight className="w-5 h-5 ml-2" /></>
+                                    )}
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </section>
 
-            {/* --- Success Message Popup --- */}
+            {/* Success Message */}
             {formSubmitted && (
-                <div className="fixed bottom-5 right-5 bg-purple-600 text-white p-4 rounded-lg shadow-xl flex items-center space-x-2 transition-opacity duration-300">
-                    <Check className="w-5 h-5" /><span>Inquiry successfully simulated and logged to console.</span>
+                <div className="fixed bottom-8 right-8 z-50 animate-bounce-in">
+                    <div className="bg-slate-900 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center border border-slate-800">
+                        <div className="bg-green-500 rounded-full p-1 mr-3">
+                            <Check className="w-3 h-3 text-white" />
+                        </div>
+                        <span className="font-medium">Inquiry Sent Successfully</span>
+                    </div>
                 </div>
             )}
         </div>
     );
 }
 
-// --- Wrapper Component (Good practice if you need layout for multiple pages) ---
 export default function App() {
-    return <InvestorPageContent />;
+    return <InvestorPageTighter />;
 }
