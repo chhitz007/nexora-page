@@ -46,20 +46,20 @@ export default function FounderCarouselCard({ founder, onClick }: CarouselCardPr
 
   return (
     <div
-      className="flex-shrink-0 w-full md:w-full bg-white rounded-xl shadow-lg border border-gray-100 p-6 md:p-7 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:shadow-xl hover:border-gray-700 hover:-translate-y-0.5"
+      // 💡 RESPONSIVENESS EDIT: Changed card padding to p-5 md:p-7 for better use of space on small screens
+      className="flex-shrink-0 w-full md:w-full bg-white rounded-xl shadow-lg border border-gray-100 p-5 md:p-7 flex flex-col justify-between cursor-pointer transition-all duration-300 hover:shadow-xl hover:border-gray-700 hover:-translate-y-0.5"
       onClick={() => onClick(founder)}
     >
       <div className="flex items-center space-x-5 mb-7">
         {/* Avatar / Image Space - Parent div is w-24 h-24 (96px) */}
         <div className={`w-24 h-24 rounded-full flex-shrink-0 flex items-center justify-center bg-gray-100/50 overflow-hidden border-2 ${colorClasses.avatarBorder}`}>
           {founder.avatarUrl ? (
-            // 🚀 FIX 2 & 3: Use <Image />, set explicit dimensions, and set loading="lazy"
+            // Using Next/Image is correct for performance and CLS!
             <Image
               src={founder.avatarUrl}
               alt={founder.name}
               width={96} // Fixes CLS
               height={96} // Fixes CLS
-              // Use fill to respect the parent div's w-24/h-24 and object-cover
               style={{ objectFit: 'cover' }}
               loading="lazy" // Defers off-screen images
               sizes="(max-width: 768px) 96px, 96px"
@@ -71,21 +71,22 @@ export default function FounderCarouselCard({ founder, onClick }: CarouselCardPr
 
         {/* Name and Title Block */}
         <div className="flex-grow">
-          <h3 className="text-2xl font-extrabold text-gray-900">{founder.name}</h3>
-          {/* Title uses dynamic colorClasses.text which is now -700 */}
-          <p className={`text-base font-semibold ${colorClasses.text}`}>{founder.title}</p>
+          {/* 💡 RESPONSIVENESS EDIT: Name is text-xl on mobile, scales to 2xl */}
+          <h3 className="text-xl md:text-2xl font-extrabold text-gray-900">{founder.name}</h3>
+          <p className={`text-sm md:text-base font-semibold ${colorClasses.text}`}>{founder.title}</p>
         </div>
+        {/* NOTE: No overflow issues here because flex-grow handles the remaining space well. */}
       </div>
 
       <div className="flex-grow">
-        {/* Note Content - FIXED: Changed text-gray-700 to text-gray-800 for better contrast */}
-        <p className="text-base text-gray-800 leading-normal line-clamp-4">
+        {/* 💡 RESPONSIVENESS EDIT: Quote is text-sm on mobile, scales to base */}
+        <p className="text-sm md:text-base text-gray-800 leading-normal line-clamp-4">
           {founder.noteContent}
         </p>
       </div>
 
-      {/* Read More Link - FIXED: Changed text-purple-600 to text-purple-700 */}
-      <div className="mt-5 flex items-center text-base font-bold text-purple-700 hover:text-purple-900 transition-colors">
+      {/* Read More Link */}
+      <div className="mt-5 flex items-center text-sm md:text-base font-bold text-purple-700 hover:text-purple-900 transition-colors">
         Read More
         <ChevronRight className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" />
       </div>

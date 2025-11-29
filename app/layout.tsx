@@ -37,22 +37,22 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
               {/* Column 1: Company Logo, Slogan, and Socials */}
               <div className="col-span-2 md:col-span-1">
-                <h4 className="text-2xl font-extrabold text-purple-700">Bulk Business</h4>
+                <h4 className="text-2xl font-extrabold text-blue-700">Skye Bharat</h4>
                 <p className="mt-2 text-sm text-gray-700">
-                  The B2B platform transforming supply chain logistics.
+                  The platform that transforming supply chain logistics.
                 </p>
 
                 {/* Simplified Social Media Icons */}
                 <div className="flex space-x-4 mt-6">
                   {/* Contrast is good (text-gray-700 on bg-gray-100) */}
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
-                    className="text-gray-700 hover:text-purple-600 transition-colors"><Instagram className="w-5 h-5" /></a>
+                    className="text-gray-700 hover:text-blue-600 transition-colors"><Instagram className="w-5 h-5" /></a>
                   <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                    className="text-gray-700 hover:text-purple-600 transition-colors"><Twitter className="w-5 h-5" /></a>
-                  <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"
-                    className="text-gray-700 hover:text-purple-600 transition-colors"><Linkedin className="w-5 h-5" /></a>
+                    className="text-gray-700 hover:text-blue-600 transition-colors"><Twitter className="w-5 h-5" /></a>
+                  <a href="https://linkedin.com" target="_blue" rel="noopener noreferrer" aria-label="LinkedIn"
+                    className="text-gray-700 hover:text-blue-600 transition-colors"><Linkedin className="w-5 h-5" /></a>
                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
-                    className="text-gray-700 hover:text-purple-600 transition-colors"><Facebook className="w-5 h-5" /></a>
+                    className="text-gray-700 hover:text-blue-600 transition-colors"><Facebook className="w-5 h-5" /></a>
                 </div>
               </div>
 
@@ -60,10 +60,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div>
                 <h4 className="text-base font-semibold text-gray-900 mb-4">Company</h4>
                 <ul className="space-y-3 text-sm">
-                  <li><a href="/about" className="text-gray-700 hover:text-purple-600 transition-colors">About Us</a></li>
-                  <li><a href="/careers" className="text-gray-700 hover:text-purple-600 transition-colors">Careers <span className="text-xs bg-purple-200 text-purple-800 px-2 py-0.5 rounded-full ml-1 font-medium">Hiring</span></a></li>
-                  <li><a href="/contact" className="text-gray-700 hover:text-purple-600 transition-colors">Contact Sales</a></li>
-                  <li><a href="/blog" className="text-gray-700 hover:text-purple-600 transition-colors">Our Blog</a></li>
+                  <li><a href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">About Us</a></li>
+                  <li><a href="/careers" className="text-gray-700 hover:text-blue-600 transition-colors">Careers <span className="text-xs bg-blue-200 text-blue-800 px-2 py-0.5 rounded-full ml-1 font-medium">Hiring</span></a></li>
+                  <li><a href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact Sales</a></li>
+                  <li><a href="/blog" className="text-gray-700 hover:text-blue-600 transition-colors">Our Blog</a></li>
                 </ul>
               </div>
 
@@ -71,10 +71,10 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div>
                 <h4 className="text-base font-semibold text-gray-900 mb-4">Resources</h4>
                 <ul className="space-y-3 text-sm">
-                  <li><a href="/help" className="text-gray-700 hover:text-purple-600 transition-colors">Help Center</a></li>
-                  <li><a href="/guides" className="text-gray-700 hover:text-purple-600 transition-colors">Guides & Tutorials</a></li>
-                  <li><a href="/security" className="text-gray-700 hover:text-purple-600 transition-colors">Security</a></li>
-                  <li><a href="/faq" className="text-gray-700 hover:text-purple-600 transition-colors">FAQ</a></li>
+                  <li><a href="/help" className="text-gray-700 hover:text-blue-600 transition-colors">Help Center</a></li>
+                  <li><a href="/guides" className="text-gray-700 hover:text-blue-600 transition-colors">Guides & Tutorials</a></li>
+                  <li><a href="/security" className="text-gray-700 hover:text-blue-600 transition-colors">Security</a></li>
+                  <li><a href="/faq" className="text-gray-700 hover:text-blue-600 transition-colors">FAQ</a></li>
                 </ul>
               </div>
 
@@ -82,9 +82,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
               <div>
                 <h4 className="text-base font-semibold text-gray-900 mb-4">Legal</h4>
                 <ul className="space-y-3 text-sm">
-                  <li><a href="/privacy" className="text-gray-700 hover:text-purple-600 transition-colors">Privacy Policy</a></li>
-                  <li><a href="/terms" className="text-gray-700 hover:text-purple-600 transition-colors">Terms of Service</a></li>
-                  <li><a href="/sitemap" className="text-gray-700 hover:text-purple-600 transition-colors">Sitemap</a></li>
+                  <li><a href="/privacy" className="text-gray-700 hover:text-blue-600 transition-colors">Privacy Policy</a></li>
+                  <li><a href="/terms" className="text-gray-700 hover:text-blue-600 transition-colors">Terms of Service</a></li>
+                  <li><a href="/sitemap" className="text-gray-700 hover:text-blue-600 transition-colors">Sitemap</a></li>
                 </ul>
               </div>
 
@@ -95,12 +95,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
               {/* Copyright */}
               <p>
-                &copy; {new Date().getFullYear()} Bulk Business. All rights reserved.
+                &copy; {new Date().getFullYear()} Skye Bharat. All rights reserved.
               </p>
 
               {/* Credit */}
               <p className="mt-2 md:mt-0">
-                Made in India  by <span className="text-purple-600 font-bold">Chhitiz Upadhyay</span>
+                Made in India  by <span className="text-blue-600 font-bold">Chhitiz Upadhyay</span>
               </p>
 
             </div>

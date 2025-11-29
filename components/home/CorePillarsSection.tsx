@@ -56,35 +56,35 @@ export default function CorePillarsSection({ openPillarModal }: CorePillarsSecti
     return (
         <>
             <style jsx>{`
-        @keyframes shimmer-slide {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); }
-        }
-        .group:hover .group-hover\\:animate-\\[shimmer-slide_1\\.5s_ease-in-out\\] {
-          animation: shimmer-slide 1.5s ease-in-out;
-        }
+        @keyframes shimmer-slide {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .group:hover .group-hover\\:animate-\\[shimmer-slide_1\\.5s_ease-in-out\\] {
+          animation: shimmer-slide 1.5s ease-in-out;
+        }
 
-        .pillar-border-base {
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 4px; 
-          background-color: transparent;
-          transition: background-color 0.3s ease-out;
-        }
-        .pillar-border-accent {
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 100%;
-          width: 0;
-          transition: width 0.3s ease-out;
-        }
-        .group:hover .pillar-border-accent {
-          width: 100%;
-        }
-      `}</style>
+        .pillar-border-base {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 4px; 
+          background-color: transparent;
+          transition: background-color 0.3s ease-out;
+        }
+        .pillar-border-accent {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 0;
+          transition: width 0.3s ease-out;
+        }
+        .group:hover .pillar-border-accent {
+          width: 100%;
+        }
+      `}</style>
 
             <section className="py-6 md:py-8 bg-gray-800">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -92,11 +92,12 @@ export default function CorePillarsSection({ openPillarModal }: CorePillarsSecti
                         <span className="inline-block text-sm font-semibold text-gray-200 uppercase tracking-wider mb-2">
                             {pillarsData.header.tagline}
                         </span>
-                        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">
+                        {/* **RESPONSIVENESS EDIT:** Changed base text size from 'text-4xl' to 'text-3xl sm:text-4xl' for better scaling on very small phones. */}
+                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
                             {pillarsData.header.title.split('.').map((part, index) => (
                                 <React.Fragment key={index}>
                                     {part.trim()}
-                                    {index < pillarsData.header.title.split('.').length - 1 && <span className="text-purple-400">.</span>}
+                                    {index < pillarsData.header.title.split('.').length - 1 && <span className="text-blue-400">.</span>}
                                 </React.Fragment>
                             ))}
                         </h2>

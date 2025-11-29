@@ -1,12 +1,12 @@
 // components/data/homeData.ts
 
-import {  Database, ShoppingBag, Globe2, Briefcase } from 'lucide-react';
+import { Globe2, PersonStanding, Bus, ShoppingCart } from 'lucide-react';
 import { HeroData, PillarsDataInterface, VMPanelContent, Founder } from '../types';
 
 export const heroData: HeroData = {
     tagline: "Global Reach. Local Trust.",
     headline: "The Future Begins with Nexora.",
-    highlightWord: "Nexora",
+    highlightWord: "SKYBHARAT",
 };
 
 
@@ -18,43 +18,47 @@ export const pillarsData: PillarsDataInterface = {
     },
     items: [
         {
-            name: 'TradeSphere',
-            slogan: 'Connecting Businesses. Expanding Horizons.',
-            description: 'TradeSphere is a global B2B marketplace designed to connect buyers and suppliers seamlessly. It empowers businesses with real-time trade insights, secure transactions, and a trusted network for scaling across borders. From discovery to delivery, TradeSphere simplifies every step of your trading journey.',
-            icon: Database,
+            // 1. SkyeCentral: The core hub for B2B transactions and services.
+            name: 'SkyeCentral',
+            slogan: 'The Central Nexus for Enterprise.',
+            description: 'SkyeCentral is our flagship B2B platform, serving as the trusted digital hub that orchestrates high-value transactions, supply chain financing, and comprehensive compliance across diverse global and domestic markets. It is the true core of our business ecosystem.',
+            icon: Bus,
             status: 'waitlist',
             actionText: 'Join Waitlist',
-            accentColor: 'text-indigo-700', // ✅ Matches professional & trustworthy tone
+            accentColor: 'text-indigo-700', // Matches professional & trustworthy tone
             actionHref: '/community',
         },
         {
-            name: 'ShopNova',
-            slogan: 'Shop Smart. Live Bright.',
-            description: 'ShopNova redefines online retail with a modern, customer-first experience. It connects buyers to trusted sellers worldwide, ensuring smooth transactions, transparent pricing, and fast delivery. Every product and interaction reflects innovation and simplicity.',
-            icon: ShoppingBag,
+            // 2. SkyeCart: The B2C e-commerce/retail arm.
+            name: 'SkyeCart',
+            slogan: 'Seamless Shopping. Simplified.',
+            description: 'SkyeCart is our customer-centric B2C marketplace, delivering a unified and personalized retail experience. We connect consumers with verified, high-quality products, backed by secure payment systems and our reliable, fast fulfillment network.',
+            icon: ShoppingCart,
             status: 'waitlist',
             actionText: 'Explore Soon',
-            accentColor: 'text-pink-700',
+            accentColor: 'text-pink-700', // Retains original color for a consumer-facing feel
             actionHref: '/coming-soon',
         },
         {
-            name: 'GlobalLink',
-            slogan: 'Connecting Markets, Empowering Trade.',
-            description: 'GlobalLink is the unified platform for global import-export operations. It bridges businesses across borders, providing real-time logistics tracking, compliance management, and data-driven trade intelligence to simplify international commerce.',
+            // 3. SkyeSphere: Implies global coverage; suitable for Logistics/Global Trade.
+            name: 'SkyeSphere',
+            slogan: 'Logistics. Global Reach. Simplified.',
+            description: 'SkyeSphere is the unified logistics and fulfillment engine for our entire commerce platform. It manages end-to-end supply chain operations, including warehousing, real-time tracking, and cross-border trade, ensuring resilience and speed for all products.',
             icon: Globe2,
             status: 'launching',
             actionText: 'Get Started',
-            accentColor: 'text-emerald-700',
+            accentColor: 'text-emerald-700', // Retains original color for growth/expansion
             actionHref: '/global-link',
         },
         {
-            name: 'SkillHub',
-            slogan: 'Where Skills Meet Opportunity.',
-            description: 'SkillHub connects professionals and businesses in a dynamic service ecosystem. From freelancers to enterprises, it’s the trusted hub to find, hire, and collaborate — powered by verified profiles, intelligent matching, and transparent contracts.',
-            icon: Briefcase,
+            // 4. SkyeSeva: 'Seva' means service; perfect for a human capital/services platform.
+            name: 'SkyeSeva',
+            slogan: 'Empowering Skills. Delivering Service.',
+            description: 'SkyeSeva is our dedicated human capital and professional services platform. It connects skilled professionals and enterprises needing specialized talent, fostering economic opportunity and simplifying access to high-demand service providers nationwide.',
+            icon: PersonStanding,
             status: 'launching',
             actionText: 'Join Beta',
-            accentColor: 'text-amber-700',
+            accentColor: 'text-amber-700', // Retains original color for energy/opportunity
             actionHref: '/skillhub',
         },
 
