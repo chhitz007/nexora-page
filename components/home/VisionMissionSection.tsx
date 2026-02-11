@@ -27,17 +27,17 @@ export default function VisionMissionSection({ openVMModal }: VisionMissionSecti
             <section className="py-12 md:py-16 bg-gray-100">
                 <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
-                        {/* **RESPONSIVENESS EDIT 2:** Changed base text size from 'text-4xl' to 'text-3xl sm:text-4xl' for better scaling on very small phones. */}
-                        <h2 className={`text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 relative inline-block`}>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 relative inline-block">
                             Our Core Philosophy
                             <span className="absolute left-1/2 transform -translate-x-1/2 -bottom-3 h-1 w-20 bg-purple-600 rounded-full"></span>
                         </h2>
 
-                        {/* **RESPONSIVENESS EDIT 3:** Changed 'mt-4' to 'mt-6' for better vertical spacing after the title. */}
-                        <p className="mt-6 text-lg md:text-xl text-gray-700 max-w-2xl mx-auto">
-                            Guiding our technology and our commitment to the future of commerce.
+                        {/* Subtitle — refined weight & hierarchy */}
+                        <p className="mt-6 text-base md:text-lg font-bold text-gray-600 tracking-wide max-w-2xl mx-auto">
+                            Build systems people can trust, use, and rely on every day.
                         </p>
                     </div>
+
 
                     <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
                         {/* Vision Card (No structural changes needed) */}

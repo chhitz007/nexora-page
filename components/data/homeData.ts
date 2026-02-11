@@ -1,6 +1,6 @@
 // components/data/homeData.ts
 
-import { Globe2, PersonStanding, Bus, ShoppingCart } from 'lucide-react';
+import { Globe2, PersonStanding, Network, ShoppingCart } from 'lucide-react';
 import { HeroData, PillarsDataInterface, VMPanelContent, Founder } from '../types';
 
 export const heroData: HeroData = {
@@ -14,47 +14,50 @@ export const pillarsData: PillarsDataInterface = {
     header: {
         tagline: "The Core Four",
         title: "Intelligence. Execution. Scale.",
-        subtitle: "We're not just a platform; we are the interconnected systems that transform global supply chains.",
+        subtitle: "Four forces. One living ecosystem.",
     },
     items: [
         {
             // 1. SkyeCentral: The core hub for B2B transactions and services.
             name: 'SkyeCentral',
-            slogan: 'The Central Nexus for Enterprise.',
-            description: 'SkyeCentral is our flagship B2B platform, serving as the trusted digital hub that orchestrates high-value transactions, supply chain financing, and comprehensive compliance across diverse global and domestic markets. It is the true core of our business ecosystem.',
-            icon: Bus,
+            slogan: 'The Place Where Buying Stops Being Guesswork',
+            description: `SkyeCentral takes care of the full business buying journey, from selecting products to completing the order. All prices, quantities, orders, payments, delivery details, and records are managed in one system. Businesses don’t need to follow up with multiple people or track things separately. Everything stays organized and connected, so buying remains clear, controlled, and hassle-free from start to end.`,
+            icon: Network,
             status: 'waitlist',
             actionText: 'Join Waitlist',
             accentColor: 'text-indigo-700', // Matches professional & trustworthy tone
             actionHref: '/community',
         },
+
         {
             // 2. SkyeCart: The B2C e-commerce/retail arm.
             name: 'SkyeCart',
-            slogan: 'Seamless Shopping. Simplified.',
-            description: 'SkyeCart is our customer-centric B2C marketplace, delivering a unified and personalized retail experience. We connect consumers with verified, high-quality products, backed by secure payment systems and our reliable, fast fulfillment network.',
+            slogan: 'Easy shopping, Built on Trust.',
+            description: `SkyeCart is built for people who want shopping to be easy and dependable. It brings trusted products, clear prices, and a smooth checkout into one seamless experience. Payments are secure, deliveries are reliable, and what you see is exactly what arrives. SkyeCart cuts out the extra steps and confusion, keeping shopping quick, comfortable, and stress-free.`,
             icon: ShoppingCart,
             status: 'waitlist',
             actionText: 'Explore Soon',
             accentColor: 'text-pink-700', // Retains original color for a consumer-facing feel
             actionHref: '/coming-soon',
         },
+
         {
             // 3. SkyeSphere: Implies global coverage; suitable for Logistics/Global Trade.
             name: 'SkyeSphere',
-            slogan: 'Logistics. Global Reach. Simplified.',
-            description: 'SkyeSphere is the unified logistics and fulfillment engine for our entire commerce platform. It manages end-to-end supply chain operations, including warehousing, real-time tracking, and cross-border trade, ensuring resilience and speed for all products.',
+            slogan: 'One Route. The Whole World.',
+            description: `SkyeSphere makes global export and import feel like one connected journey. Instead of handling borders, paperwork, and multiple partners, businesses move goods through a single, clear flow. Shipping, customs, tracking, and delivery stay aligned from start to finish. International trade stops feeling like a maze and starts moving like a straight road.`,
             icon: Globe2,
             status: 'launching',
             actionText: 'Get Started',
             accentColor: 'text-emerald-700', // Retains original color for growth/expansion
             actionHref: '/global-link',
         },
+
         {
-            // 4. SkyeSeva: 'Seva' means service; perfect for a human capital/services platform.
-            name: 'SkyeSeva',
-            slogan: 'Empowering Skills. Delivering Service.',
-            description: 'SkyeSeva is our dedicated human capital and professional services platform. It connects skilled professionals and enterprises needing specialized talent, fostering economic opportunity and simplifying access to high-demand service providers nationwide.',
+            // 4. SkyeAccess
+            name: 'SkyeAccess',
+            slogan: 'Trusted Services, One Place',
+            description: `SkyeAccess is where people and businesses find services they can trust. From everyday needs to specialised professional support, everything comes together in one reliable place. Providers are verified, prices are transparent, and work happens without back-and-forth or confusion. Getting the right service finally feels simple, controlled, and stress-free.`,
             icon: PersonStanding,
             status: 'launching',
             actionText: 'Join Beta',
@@ -67,19 +70,39 @@ export const pillarsData: PillarsDataInterface = {
 
 export const visionContent: VMPanelContent = {
     title: 'Our Vision',
-    preview: 'Our vision is to build the greatest business ecosystem India has ever seen — one that begins at the origin, unlocks through the vault, expands across the sphere, and connects through the grid.',
-    fullContent: 'Our vision is to build the greatest business ecosystem India has ever seen — one that begins at the origin, unlocks through the vault, expands across the sphere, and connects through the grid. We see a tomorrow where commerce is not noise but power, not confusion but clarity, not limited but limitless.\n\nWe envision a future where every transaction flows seamlessly, where trust is built into every interaction, and where businesses of all sizes can thrive in an interconnected digital landscape. Our ecosystem is designed to eliminate friction, foster innovation, and create unprecedented value for all stakeholders.\n\nThis is not just about building platforms — it\'s about crafting a movement that transforms how India does business, empowering millions to reach their full potential in the digital age.',
+
+    // Short teaser shown before opening / expanding
+    preview: `We’re not here to build more tools. We’re here to remove friction, restore trust, and make everyday work feel simpler and more predictable.`,
+
+    // Full vision text shown on expand / modal
+    fullContent: `This is not about building more apps, platforms, or tools. It’s about fixing the everyday problems people face while doing business or getting work done. Too often, simple things become complicated, slow, or uncertain and they shouldn’t be.
+
+                  We believe systems should work quietly in the background, without constant follow-ups or effort. Trust should come naturally from how things function, not from claims or promises. Buying, selling, moving goods, and accessing services should feel connected and predictable.
+
+                  When systems are clear, people can focus on their work instead of solving problems. Our goal is to reduce friction, remove doubt, and make progress feel steady  so businesses grow with confidence, individuals move forward with ease, and everyday work feels simpler than it does today.`,
+
     accentColor: 'teal',
     type: 'vision'
 };
 
+
 export const missionContent: VMPanelContent = {
     title: 'Our Mission',
-    preview: 'We are not here to follow the old ways of business — we are here to rewrite them. Cluchh exists to empower India\'s backbone — its manufacturers, retailers, traders, and customers — with silent systems, invisible bridges, and unbreakable trust.',
-    fullContent: 'We are not here to follow the old ways of business — we are here to rewrite them. Cluchh exists to empower India\'s backbone — its manufacturers, retailers, traders, and customers — with silent systems, invisible bridges, and unbreakable trust.\n\nOur mission is to create technology that works invisibly in the background, enabling seamless commerce without complexity. We build tools that don\'t demand attention but deliver results. We forge connections that feel natural, not forced.\n\nEvery day, we work to strengthen the foundation of Indian commerce by providing infrastructure that is reliable, scalable, and accessible to all. We believe in democratizing access to world-class business tools, ensuring that every entrepreneur has the resources to compete and succeed in the modern marketplace.',
+
+    // Short teaser shown before opening / expanding
+    preview: `We focus on building dependable systems that reduce effort, remove uncertainty, and quietly support everyday work.`,
+
+    // Full mission text shown on expand / modal
+    fullContent: `We build dependable systems that people and organisations use every day. Our focus is on practical work simplifying buying, selling, movement, and services across one connected ecosystem.
+
+                 Everything we create is designed to reduce effort, remove uncertainty, and save time. We care deeply about reliability, because small failures break trust at scale. The technology stays in the background, but the results are felt in daily work and life.
+
+                By keeping systems clear, connected, and predictable, we help people act with confidence. This is how we earn trust by making things work, every single day.`,
+
     accentColor: 'purple',
     type: 'mission'
 };
+
 
 export const foundersData: Founder[] = [
     {

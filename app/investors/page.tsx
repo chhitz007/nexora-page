@@ -86,40 +86,52 @@ const InvestorPage: React.FC = () => {
                             font-black tracking-tighter text-slate-900 mb-6 leading-[1.1]"
                         >
                             {/* Adjusted base text size from 5xl to 4xl for better mobile display */}
-                            Capitalizing on <span className={`${brandBlueText}`}>Global Supply Chain</span> Digitalization
+                            A System-First  <span className={`${brandBlueText}`}> Approach to Supply Chain </span>
+                            Digitalisation
                         </h1>
 
                         <p className="mt-6 text-lg text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0 font-medium">
-                            SkyeBharat is positioned to lead the multi-trillion dollar B2B logistics sector. We offer a high-growth opportunity for partners investing in efficiency.
+                            SkyeVerse is building connected digital systems that bring clarity and reliability to global
+                            supply chains. By focusing on strong foundations rather than rapid expansion, we offer
+                            partners a durable, long-term opportunity rooted in operational efficiency.
+
                         </p>
                     </div>
 
-                    {/* Right side: Visual Card */}
-                    {/* Added mt-12 on mobile to space it correctly below the text */}
-                    <div className="lg:w-1/2 flex justify-center lg:justify-end relative mt-12 lg:mt-0">
+                    {/* Data Card Visual */}
+                    <div className="relative w-full max-w-sm bg-white/80 backdrop-blur-xl border border-slate-100 shadow-2xl rounded-2xl p-6 sm:p-8 border-t-[6px] border-t-blue-600">
 
-                        {/* Data Card Visual */}
-                        <div className="relative w-full max-w-sm bg-white/80 backdrop-blur-xl border border-slate-100 shadow-2xl rounded-2xl p-6 sm:p-8 border-t-[6px] border-t-blue-600">
-                            <div className="flex items-center justify-between mb-8">
-                                <div>
-                                    <div className="text-sm text-slate-500 font-bold uppercase tracking-wide">Annual Growth (YoY)</div>
-                                    <div className="text-4xl font-black text-slate-900 mt-1">+127%</div>
+                        <div className="flex items-center justify-between mb-6">
+                            <div>
+                                <div className="text-sm text-slate-500 font-bold uppercase tracking-wide">
+                                    Built for Real-World Value
                                 </div>
-                                <div className="p-3 bg-green-50 rounded-xl text-green-600">
-                                    <TrendingUp className="w-8 h-8" />
+                                <div className="text-5xl font-black text-blue-600 mt-2">
+                                    ₹
                                 </div>
                             </div>
-                            <div className="space-y-4">
-                                <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                                    <div className="h-full bg-blue-600 w-[85%]"></div>
-                                </div>
-                                <div className="flex justify-between text-sm font-bold text-slate-500">
-                                    <span>Q1 Performance</span>
-                                    <span className="text-blue-600">Exceeded Target</span>
-                                </div>
+                            <div className="p-4 bg-blue-50 rounded-xl text-blue-600">
+                                <Globe className="w-8 h-8" />
+                            </div>
+                        </div>
+
+                        <div className="space-y-4 mt-6">
+                            <div className="text-sm text-slate-600 font-medium">
+                                Designed around procurement, logistics, and settlement —
+                                not vanity metrics.
+                            </div>
+
+                            <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div className="h-full bg-blue-600 w-[70%]"></div>
+                            </div>
+
+                            <div className="flex justify-between text-xs font-bold text-slate-500 uppercase tracking-wider">
+                                <span>Operational Focus</span>
+                                <span className="text-blue-600">System First</span>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </header>
 
@@ -129,14 +141,27 @@ const InvestorPage: React.FC = () => {
                 <div className="max-w-7xl mx-auto">
 
                     <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-slate-900 mb-12 sm:mb-16 text-center">
-                        Why Invest in Skye Bharat?
+                        Why SkyeVerse?
                     </h2>
 
                     <div className="grid md:grid-cols-3 gap-8">
                         {[
-                            { icon: Globe, title: 'High-Growth Sector', description: 'The B2B procurement market is undergoing a massive digital shift with significant TAM. We are capturing market share rapidly.' },
-                            { icon: PieChart, title: 'Proprietary Tech', description: 'Our platform uses AI-driven routing and predictive analytics for unmatched cost savings and operational efficiency.' },
-                            { icon: Lock, title: 'Proven Execution', description: 'Consistent quarterly growth and positive customer retention metrics validate our scalable technology model.' },
+                            {
+                                icon: Globe,
+                                title: 'Because execution is the real moat',
+                                description: 'Markets change fast. What survives is the ability to execute consistently. SkyeVerse is built around disciplined execution across procurement, logistics, services, and settlement not assumptions.'
+                            },
+                            {
+                                icon: PieChart,
+                                title: 'Because growth should simplify, not complicate',
+                                description: 'Most platforms grow by adding layers. SkyeVerse grows by reducing friction across buying, movement, and coordination keeping the system coherent over time.'
+                            },
+                            {
+                                icon: Lock,
+                                title: 'Because long-term value is built quietly',
+                                description: 'No shortcuts. No inflated stories. Just systems designed to hold up in real conditions, improve through use, and earn trust over time.'
+                            }
+
                         ].map((item, index) => (
                             <div key={index}
                                 // Reduced padding on mobile from p-8 to p-6

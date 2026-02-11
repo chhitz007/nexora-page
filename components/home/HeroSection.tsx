@@ -1,37 +1,44 @@
 import React from 'react';
-// import { heroData } from '../data/homeData'; // Keeping this comment as per original code
 
-// The main component must be named App and exported by default in a single-file React immersive
 export default function App() {
     return (
-        /* 1. Changed background via-purple-50 to via-sky-50 */
-        // The outer div handles responsiveness for padding and background gradient
         <div className="relative overflow-hidden bg-gradient-to-b from-white via-sky-50/30 to-white pt-20 pb-40 lg:pt-32">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4">
-                {/* Grid layout for large screens, stacking content vertically on mobile */}
                 <div className="lg:grid lg:grid-cols-12 lg:gap-20 items-center">
 
-                    {/* Left Side - Text Content (takes full width on mobile, 6 columns on large screens) */}
+                    {/* Left Side - Improved Text Presentation */}
                     <div className="lg:col-span-6 text-center lg:text-left">
-                        {/* Tagline */}
-                        <span className="inline-block text-base font-bold text-sky-600 uppercase tracking-wider mb-4 px-4 py-2 bg-sky-100 rounded-full border border-sky-200">
-                            Official Root Site
-                        </span>
+                        <div className="relative">
+                            <p className="text-4xl sm:text-5xl font-semibold text-gray-900 mb-4">
+                                One Sky.
+                            </p>
 
-                        {/* Headline - Text size changes with screen size: 5xl -> 6xl -> 7xl */}
-                        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 leading-snug mt-6">
-                            The Future Begins with <br className="sm:hidden" />
-                            <span className="text-sky-500">SKYE</span>
-                            <span className="text-orange-500">BHARAT</span>.
-                        </h1>
+                            <p className="text-4xl sm:text-5xl font-semibold text-gray-900 mb-4">
+                                One Ecosystem.
+                            </p>
+
+                            <p className="text-4xl sm:text-5xl font-semibold text-gray-900 mb-8">
+                                One Environment.
+                            </p>
+
+                            <h2 className="text-5xl sm:text-6xl font-extrabold tracking-tight">
+                                The{" "}
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 to-blue-700">
+                                    SkyeVerse
+                                </span>
+                                .
+                            </h2>
+
+                            {/* Accent line */}
+                            <div className="mt-6 h-1 w-24 bg-gradient-to-r from-sky-600 to-blue-800 rounded-full mx-auto lg:mx-0"></div>
+                        </div>
                     </div>
+                    
 
-                    {/* Right Side - Visual / Graphic (adds top margin on mobile, removes it on large screens) */}
+                    {/* Right Side - Visual / Graphic (unchanged) */}
                     <div className="mt-16 lg:mt-0 lg:col-span-6">
-                        {/* Box Gradient */}
                         <div className="relative w-full h-96 bg-gradient-to-br from-sky-200 to-white rounded-2xl flex items-center justify-center shadow-xl border border-sky-300">
                             <svg
-                                /* Icon Color */
                                 className="w-40 h-40 text-sky-600"
                                 fill="none"
                                 viewBox="0 0 24 24"
@@ -51,4 +58,4 @@ export default function App() {
             </div>
         </div>
     );
-};
+}

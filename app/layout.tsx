@@ -29,7 +29,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
         {/* ENHANCED FOOTER SECTION */}
         {/* All contrast colors (text-gray-700 on bg-gray-100) are high enough for WCAG AA. */}
-        <footer className="bg-gray-100 border-t border-gray-200 py-6">
+        <footer className="bg-gray-100 border-t border-gray-400 py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
             {/* --- 4-Column Navigation Grid --- */}
