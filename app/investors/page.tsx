@@ -23,8 +23,10 @@ const InvestorPage: React.FC = () => {
         name: '',
         email: '',
         organization: '',
+        linkedin: '',
         interest: 'VC',
-        message: ''
+        message: '',
+        representsFirm: false
     });
 
     // Brand Design System
@@ -54,8 +56,10 @@ const InvestorPage: React.FC = () => {
                 name: '',
                 email: '',
                 organization: '',
+                linkedin: '',
                 interest: 'VC',
-                message: ''
+                message: '',
+                representsFirm: false
             });
             setTimeout(() => setFormSubmitted(false), 6000); // Hide success message
         }, 1500);
@@ -192,10 +196,10 @@ const InvestorPage: React.FC = () => {
 
                     <div className="text-center mb-10">
                         <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white mb-3">
-                            Request Investor Deck
+                            ACCESS THE SKYEVERSE INVESTOR BRIEF
                         </h2>
                         <p className="text-lg text-slate-400 font-medium">
-                            Our dedicated investor relations team responds within 48 hours.
+                            We respond within 48 hours. The investor brief is shared after review.
                         </p>
                     </div>
 
@@ -229,6 +233,16 @@ const InvestorPage: React.FC = () => {
                                     onChange={handleFormChange} placeholder="Venture Capital XYZ" value={formData.organization} />
                             </div>
 
+                            {/* NEW LinkedIn Field */}
+                            <div>
+                                <label htmlFor="linkedin" className={labelClasses}>LinkedIn Profile (Optional)</label>
+                                <input type="url" name="linkedin" id="linkedin"
+                                    className={inputClasses}
+                                    onChange={handleFormChange}
+                                    placeholder="https://linkedin.com/in/yourprofile"
+                                    value={formData.linkedin} />
+                            </div>
+
                             <div>
                                 <label htmlFor="interest" className={labelClasses}>Investment Stage of Interest</label>
                                 <div className="relative">
@@ -246,6 +260,7 @@ const InvestorPage: React.FC = () => {
                                 </div>
                             </div>
 
+
                             <div>
                                 <label htmlFor="message" className={labelClasses}>Introductory Note</label>
                                 <textarea name="message" id="message" rows={3}
@@ -253,12 +268,27 @@ const InvestorPage: React.FC = () => {
                                     onChange={handleFormChange} placeholder="We are interested in..." value={formData.message}></textarea>
                             </div>
 
+                            {/* NEW Checkbox */}
+                            <div className="flex items-start space-x-3 pt-2">
+                                <input
+                                    type="checkbox"
+                                    name="representsFirm"
+                                    id="representsFirm"
+                                    checked={formData.representsFirm}
+                                    onChange={handleFormChange}
+                                    className="mt-1 h-4 w-4 text-blue-600 border-slate-300 rounded focus:ring-blue-500"
+                                />
+                                <label htmlFor="representsFirm" className="text-sm text-slate-700 font-medium leading-relaxed">
+                                    I represent an investment firm, fund, or family office.
+                                </label>
+                            </div>
+
                             <div className="pt-4">
                                 <button type="submit" disabled={loading} className={`w-full py-3.5 px-4 rounded-xl flex items-center justify-center ${accentButton} disabled:opacity-70 disabled:cursor-not-allowed`}>
                                     {loading ? (
                                         <span className="flex items-center">Processing...</span>
                                     ) : (
-                                        <>REQUEST ACCESS <ArrowRight className="w-5 h-5 ml-2" /></>
+                                            <>Access the SkyeVerse Investor Brief  </>
                                     )}
                                 </button>
                             </div>
