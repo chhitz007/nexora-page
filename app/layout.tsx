@@ -2,7 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import type { ReactNode } from 'react';
 import Navbar from '../components/Navbar';
-import { Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { Instagram, Twitter, Linkedin, Facebook, Youtube } from 'lucide-react';
 
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' });
@@ -37,9 +37,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
               {/* Column 1: Company Logo, Slogan, and Socials */}
               <div className="col-span-2 md:col-span-1">
-                <h4 className="text-2xl font-extrabold text-blue-700">Skye Bharat</h4>
+                <h4 className="text-2xl font-extrabold text-blue-700">SKyeVerse</h4>
                 <p className="mt-2 text-sm text-gray-700">
-                  The platform that transforming supply chain logistics.
+                  Built for What’s Next.
                 </p>
 
                 {/* Simplified Social Media Icons */}
@@ -47,8 +47,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
                   {/* Contrast is good (text-gray-700 on bg-gray-100) */}
                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
                     className="text-gray-700 hover:text-blue-600 transition-colors"><Instagram className="w-5 h-5" /></a>
-                  <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
-                    className="text-gray-700 hover:text-blue-600 transition-colors"><Twitter className="w-5 h-5" /></a>
+                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter"
+                    className="text-gray-700 hover:text-blue-600 transition-colors"><Youtube className="w-5 h-5" /></a>
                   <a href="https://linkedin.com" target="_blue" rel="noopener noreferrer" aria-label="LinkedIn"
                     className="text-gray-700 hover:text-blue-600 transition-colors"><Linkedin className="w-5 h-5" /></a>
                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"
@@ -56,25 +56,26 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 </div>
               </div>
 
+
               {/* Column 2: Company Links */}
               <div>
                 <h4 className="text-base font-semibold text-gray-900 mb-4">Company</h4>
                 <ul className="space-y-3 text-sm">
                   <li><a href="/about" className="text-gray-700 hover:text-blue-600 transition-colors">About Us</a></li>
-                  <li><a href="/careers" className="text-gray-700 hover:text-blue-600 transition-colors">Careers <span className="text-xs bg-blue-200 text-blue-800 px-2 py-0.5 rounded-full ml-1 font-medium">Hiring</span></a></li>
-                  <li><a href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact Sales</a></li>
-                  <li><a href="/blog" className="text-gray-700 hover:text-blue-600 transition-colors">Our Blog</a></li>
+                  <li><a href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">Careers </a></li>
+                  <li><a href="/investors" className="text-gray-700 hover:text-blue-600 transition-colors">Investors</a></li>
+                  <li><a href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors">Contact</a></li>
                 </ul>
               </div>
 
-              {/* Column 3: Resources Links */}
+              {/* Column 3: Ecosystem Links */}
               <div>
-                <h4 className="text-base font-semibold text-gray-900 mb-4">Resources</h4>
+                <h4 className="text-base font-semibold text-gray-900 mb-4">Ecosystem</h4>
                 <ul className="space-y-3 text-sm">
-                  <li><a href="/help" className="text-gray-700 hover:text-blue-600 transition-colors">Help Center</a></li>
-                  <li><a href="/guides" className="text-gray-700 hover:text-blue-600 transition-colors">Guides & Tutorials</a></li>
-                  <li><a href="/security" className="text-gray-700 hover:text-blue-600 transition-colors">Security</a></li>
-                  <li><a href="/faq" className="text-gray-700 hover:text-blue-600 transition-colors">FAQ</a></li>
+                  <li><a href="/help" className="text-gray-700 hover:text-blue-600 transition-colors">SkyeCentral</a></li>
+                  <li><a href="/guides" className="text-gray-700 hover:text-blue-600 transition-colors">SkyeCart</a></li>
+                  <li><a href="/security" className="text-gray-700 hover:text-blue-600 transition-colors">SkyeSphere</a></li>
+                  <li><a href="/faq" className="text-gray-700 hover:text-blue-600 transition-colors">SkyeAccess</a></li>
                 </ul>
               </div>
 
@@ -84,7 +85,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 <ul className="space-y-3 text-sm">
                   <li><a href="/privacy" className="text-gray-700 hover:text-blue-600 transition-colors">Privacy Policy</a></li>
                   <li><a href="/terms" className="text-gray-700 hover:text-blue-600 transition-colors">Terms of Service</a></li>
-                  <li><a href="/sitemap" className="text-gray-700 hover:text-blue-600 transition-colors">Sitemap</a></li>
+                  <li><a href="/sitemap" className="text-gray-700 hover:text-blue-600 transition-colors">Compliance & Governance</a></li>
                 </ul>
               </div>
 
@@ -95,7 +96,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
               {/* Copyright */}
               <p>
-                &copy; {new Date().getFullYear()} Skye Bharat. All rights reserved.
+                &copy; {new Date().getFullYear()} SkyeVerse. Built for What’s Next
               </p>
 
               {/* Credit */}

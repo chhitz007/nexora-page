@@ -1,4 +1,8 @@
 'use client';
+
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
 import React, { useState } from 'react';
 
 // Using inline SVG components from lucide-react (simulated)
@@ -10,7 +14,6 @@ const Check: React.FC<IconProps> = (props) => (
     </svg>
 );
 const TrendingUp: React.FC<IconProps> = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" /></svg>;
-const ArrowRight: React.FC<IconProps> = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg>;
 const PieChart: React.FC<IconProps> = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83" /><path d="M22 12A10 10 0 0 0 12 2v10z" /></svg>;
 const Globe: React.FC<IconProps> = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>;
 const Lock: React.FC<IconProps> = (props) => <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></svg>;
@@ -41,18 +44,35 @@ const InvestorPage: React.FC = () => {
     const inputClasses = "mt-1 w-full p-3.5 bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all duration-200 font-medium";
     const labelClasses = "block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1";
 
-    const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+    const handleFormChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    ) => {
+        const target = e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
+        const name = target.name;
+        const type = (target as HTMLInputElement).type;
+        const value = target.value;
+        const checked = (target as HTMLInputElement).checked;
 
-    const handleFormSubmit = (e: React.FormEvent) => {
+        setFormData({
+            ...formData,
+            [name]: type === "checkbox" ? checked : value
+        });
+    };
+
+
+    const handleFormSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
-        // Simulate API call delay
-        setTimeout(() => {
-            console.log("Investor Inquiry Data:", formData);
-            setLoading(false);
+
+        try {
+            await addDoc(collection(db, "investorInquiries"), {
+                ...formData,
+                createdAt: serverTimestamp()
+            });
+
             setFormSubmitted(true);
-            setFormData({ // Clear form after submission simulation
+
+            setFormData({
                 name: '',
                 email: '',
                 organization: '',
@@ -61,8 +81,14 @@ const InvestorPage: React.FC = () => {
                 message: '',
                 representsFirm: false
             });
-            setTimeout(() => setFormSubmitted(false), 6000); // Hide success message
-        }, 1500);
+
+            setTimeout(() => setFormSubmitted(false), 6000);
+
+        } catch (error) {
+            console.error("Error submitting investor form:", error);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -183,6 +209,7 @@ const InvestorPage: React.FC = () => {
                     </div>
                 </div>
             </section>
+
 
             {/* --- 3. Investor Inquiry Form (Spotlight Section) --- */}
             <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-slate-900 relative overflow-hidden">

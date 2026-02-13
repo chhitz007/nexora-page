@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Home, Users, DollarSign, Mail, Menu, X } from 'lucide-react';
+import { Home, Users, Mail, Menu, X, IndianRupeeIcon } from 'lucide-react';
 
 /* ===== Logo Icon (Single Royal Blue Tone) ===== */
 const SkyebharatLogoIcon: React.FC<{ className: string }> = ({ className }) => (
@@ -42,7 +42,7 @@ export default function Navbar() {
     const navItems = [
         { name: 'Home', href: '/', Icon: Home },
         { name: 'Community', href: '/community', Icon: Users },
-        { name: 'Investors', href: '/investors', Icon: DollarSign },
+        { name: 'Investors', href: '/investors', Icon: IndianRupeeIcon },
         { name: 'Contact', href: '/contact', Icon: Mail },
     ];
 
@@ -59,7 +59,7 @@ export default function Navbar() {
                         >
                             <SkyebharatLogoIcon className="w-16 h-8 mr-2 text-blue-600" />
                             <span className="text-blue-600">
-                                SkyVerse
+                                SkyeVerse
                             </span>
                         </CustomLink>
                     </div>

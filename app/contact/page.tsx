@@ -1,4 +1,8 @@
 'use client';
+
+import { db } from "@/lib/firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
 import React, { useState, useEffect } from 'react';
 import {
     Briefcase,
@@ -109,6 +113,15 @@ const ContactPage = () => {
         { title: 'Media', icon: Mic }
     ];
 
+
+    const submitForm = async (collectionName: string, data: any) => {
+        await addDoc(collection(db, collectionName), {
+            ...data,
+            createdAt: serverTimestamp()
+        });
+    };
+
+
     return (
         <div className="min-h-screen bg-gradient-to-b from-white to-slate-400 text-slate-900">
 
@@ -178,8 +191,8 @@ const ContactPage = () => {
                                 </div>
                                 <div>
                                     <h4 className="font-semibold mb-2">Operational Presence</h4>
-                                    <p className="text-slate-600 text-sm">Kolkata, West Bengal</p>
-                                    <p className="text-slate-600 text-sm">Bengaluru, Karnataka</p>
+                                    <p className="text-slate-600 text-sm">North Kolkata, West Bengal 700004, India</p>
+                                    <p className="text-slate-600 text-sm">Indiranagar, Karnataka 560038, India</p>
                                 </div>
                             </div>
                         </div>
@@ -251,7 +264,30 @@ const ContactPage = () => {
                             For suppliers, logistics partners, and strategic collaborations.
                         </p>
 
-                        <form onSubmit={handleSubmit} className="space-y-6">
+                        <form
+                            onSubmit={async (e) => {
+                                e.preventDefault();
+
+                                try {
+                                    await submitForm("contact_partnership", formData);
+
+                                    setActiveModal(null);
+                                    setFormData(initialFormData);
+
+                                    setStatusMessage({
+                                        type: "success",
+                                        text: "Your partnership inquiry has been securely received."
+                                    });
+
+                                } catch (error) {
+                                    setStatusMessage({
+                                        type: "error",
+                                        text: "Something went wrong. Please try again."
+                                    });
+                                }
+                            }}
+                            className="space-y-6"
+                        >
 
                             <div>
                                 <label className="text-sm font-medium text-slate-600">Full Name</label>
@@ -336,6 +372,7 @@ const ContactPage = () => {
             )}
 
 
+
             {activeModal === 'Careers' && (
                 <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50 px-4 py-8">
 
@@ -362,13 +399,31 @@ const ContactPage = () => {
                         </p>
 
                         <form
-                            onSubmit={(e) => {
+                            onSubmit={async (e) => {
                                 e.preventDefault();
-                                setActiveModal(null);
-                                setStatusMessage({
-                                    type: 'success',
-                                    text: 'Your application has been submitted successfully.'
-                                });
+
+                                const form = e.target as HTMLFormElement;
+                                const formData = new FormData(form);
+                                const data = Object.fromEntries(formData.entries());
+
+                                try {
+                                    await submitForm("contact_careers", data);
+
+                                    setActiveModal(null);
+
+                                    setStatusMessage({
+                                        type: "success",
+                                        text: "Your application has been submitted successfully."
+                                    });
+
+                                    form.reset();
+
+                                } catch (error) {
+                                    setStatusMessage({
+                                        type: "error",
+                                        text: "Something went wrong. Please try again."
+                                    });
+                                }
                             }}
                             className="space-y-6"
                         >
@@ -380,6 +435,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name="fullName"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -392,6 +448,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="email"
+                                    name="email"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -403,6 +460,7 @@ const ContactPage = () => {
                                     Area of Interest
                                 </label>
                                 <select
+                                    name="areaOfInterest"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 >
@@ -423,6 +481,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="url"
+                                    name="linkedin"
                                     placeholder="https://linkedin.com/in/yourprofile"
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -434,6 +493,7 @@ const ContactPage = () => {
                                     Short Note (Why SkyeVerse?)
                                 </label>
                                 <textarea
+                                    name="note"
                                     maxLength={500}
                                     rows={4}
                                     required
@@ -450,7 +510,6 @@ const ContactPage = () => {
                                 Submit Application
                             </button>
 
-                            {/* Small Line */}
                             <p className="text-xs text-slate-500 text-center mt-4">
                                 We review every application carefully.
                             </p>
@@ -459,6 +518,7 @@ const ContactPage = () => {
                     </div>
                 </div>
             )}
+
 
 
             {activeModal === 'Join Waitlist' && (
@@ -487,13 +547,31 @@ const ContactPage = () => {
                         </p>
 
                         <form
-                            onSubmit={(e) => {
+                            onSubmit={async (e) => {
                                 e.preventDefault();
-                                setActiveModal(null);
-                                setStatusMessage({
-                                    type: 'success',
-                                    text: 'You’ve been added to the waitlist successfully.'
-                                });
+
+                                const form = e.target as HTMLFormElement;
+                                const formData = new FormData(form);
+                                const data = Object.fromEntries(formData.entries());
+
+                                try {
+                                    await submitForm("contact_waitlist", data);
+
+                                    setActiveModal(null);
+
+                                    setStatusMessage({
+                                        type: "success",
+                                        text: "You’ve been added to the waitlist successfully."
+                                    });
+
+                                    form.reset();
+
+                                } catch (error) {
+                                    setStatusMessage({
+                                        type: "error",
+                                        text: "Something went wrong. Please try again."
+                                    });
+                                }
                             }}
                             className="space-y-6"
                         >
@@ -505,6 +583,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name="fullName"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -517,6 +596,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="email"
+                                    name="email"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -530,12 +610,23 @@ const ContactPage = () => {
 
                                 <div className="flex gap-4">
                                     <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="radio" name="userType" value="Business" className="accent-blue-600" defaultChecked />
+                                        <input
+                                            type="radio"
+                                            name="userType"
+                                            value="Business"
+                                            className="accent-blue-600"
+                                            defaultChecked
+                                        />
                                         <span className="text-sm text-slate-600">Business</span>
                                     </label>
 
                                     <label className="flex items-center gap-2 cursor-pointer">
-                                        <input type="radio" name="userType" value="Individual" className="accent-blue-600" />
+                                        <input
+                                            type="radio"
+                                            name="userType"
+                                            value="Individual"
+                                            className="accent-blue-600"
+                                        />
                                         <span className="text-sm text-slate-600">Individual</span>
                                     </label>
                                 </div>
@@ -548,6 +639,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name="city"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -559,6 +651,7 @@ const ContactPage = () => {
                                     What are you looking for? (Optional)
                                 </label>
                                 <textarea
+                                    name="note"
                                     rows={3}
                                     maxLength={300}
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl resize-none focus:ring-2 focus:ring-blue-500 outline-none transition"
@@ -578,6 +671,7 @@ const ContactPage = () => {
                     </div>
                 </div>
             )}
+
 
 
             {activeModal === 'General' && (
@@ -606,13 +700,31 @@ const ContactPage = () => {
                         </p>
 
                         <form
-                            onSubmit={(e) => {
+                            onSubmit={async (e) => {
                                 e.preventDefault();
-                                setActiveModal(null);
-                                setStatusMessage({
-                                    type: 'success',
-                                    text: 'Your message has been sent successfully.'
-                                });
+
+                                const form = e.target as HTMLFormElement;
+                                const formData = new FormData(form);
+                                const data = Object.fromEntries(formData.entries());
+
+                                try {
+                                    await submitForm("contact_general", data);
+
+                                    setActiveModal(null);
+
+                                    setStatusMessage({
+                                        type: "success",
+                                        text: "Your message has been sent successfully."
+                                    });
+
+                                    form.reset();
+
+                                } catch (error) {
+                                    setStatusMessage({
+                                        type: "error",
+                                        text: "Something went wrong. Please try again."
+                                    });
+                                }
                             }}
                             className="space-y-6"
                         >
@@ -624,6 +736,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name="fullName"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -636,6 +749,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="email"
+                                    name="email"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -647,6 +761,7 @@ const ContactPage = () => {
                                     Category
                                 </label>
                                 <select
+                                    name="category"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 >
@@ -664,6 +779,7 @@ const ContactPage = () => {
                                     Message
                                 </label>
                                 <textarea
+                                    name="message"
                                     rows={4}
                                     required
                                     maxLength={500}
@@ -684,6 +800,7 @@ const ContactPage = () => {
                     </div>
                 </div>
             )}
+
 
 
             {activeModal === 'Media' && (
@@ -712,13 +829,31 @@ const ContactPage = () => {
                         </p>
 
                         <form
-                            onSubmit={(e) => {
+                            onSubmit={async (e) => {
                                 e.preventDefault();
-                                setActiveModal(null);
-                                setStatusMessage({
-                                    type: 'success',
-                                    text: 'Your media request has been submitted successfully.'
-                                });
+
+                                const form = e.target as HTMLFormElement;
+                                const formData = new FormData(form);
+                                const data = Object.fromEntries(formData.entries());
+
+                                try {
+                                    await submitForm("contact_media", data);
+
+                                    setActiveModal(null);
+
+                                    setStatusMessage({
+                                        type: "success",
+                                        text: "Your media request has been submitted successfully."
+                                    });
+
+                                    form.reset();
+
+                                } catch (error) {
+                                    setStatusMessage({
+                                        type: "error",
+                                        text: "Something went wrong. Please try again."
+                                    });
+                                }
                             }}
                             className="space-y-6"
                         >
@@ -730,6 +865,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name="fullName"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -742,6 +878,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="text"
+                                    name="publication"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -754,6 +891,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="email"
+                                    name="email"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
@@ -765,6 +903,7 @@ const ContactPage = () => {
                                     Type of Request
                                 </label>
                                 <select
+                                    name="requestType"
                                     required
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 >
@@ -783,6 +922,7 @@ const ContactPage = () => {
                                 </label>
                                 <input
                                     type="date"
+                                    name="deadline"
                                     className="mt-2 w-full border border-slate-300 p-3 rounded-xl focus:ring-2 focus:ring-blue-500 outline-none transition"
                                 />
                             </div>
@@ -793,6 +933,7 @@ const ContactPage = () => {
                                     Message
                                 </label>
                                 <textarea
+                                    name="message"
                                     rows={4}
                                     required
                                     maxLength={500}
