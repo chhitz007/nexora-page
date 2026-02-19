@@ -130,7 +130,7 @@ export const foundersData: Founder[] = [
         name: 'Shrey Mishra',
         title: 'Growth & Partnerships',
         accentColor: 'yellow',
-        avatarUrl: 'https://res.cloudinary.com/db7ieyyu4/image/upload/f_auto,q_auto,w_150,h_150,c_fill/v1759899280/shrey_pic_kqmyig.jpg',
+        avatarUrl: 'https://res.cloudinary.com/db7ieyyu4/image/upload/v1771521564/shrey_pic_luzucw.jpg',
         noteTitle: 'Growth is built through relationships, not shortcuts.',
         noteContent: "Every partnership starts with understanding what truly matters on both sides. Good collaborations are based on alignment, not urgency. The focus is on creating value that lasts beyond a single deal or launch. Listening to the market matters more than trying to push it. When expectations are clear and incentives are honest, growth becomes steady instead of fragile. The strongest partnerships are the ones that still make sense when conditions change.",
     },
